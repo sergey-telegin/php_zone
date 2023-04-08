@@ -1,11 +1,19 @@
 # PROJECT_NAME
 
-DESCRIPTION
+
+1. Create New Project and 
+2. Copy Skeleton's body
+3. Config nginx and SQL ports in docker-compose.yml
+
+warning!
+все файлы, которые должен видеть браузер должны находиться в public, 
+подключаемые файлы, должны находиться в src
+
 
 ## Installation
 
 ```bash
-docker-compose up -- build -d
+docker-compose up --build -d
 ```
 
 ## Usage
