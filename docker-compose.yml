@@ -5,7 +5,7 @@ services:
     build: ./Docker/php
     volumes:
       - ./Docker/composer:/usr/local/bin/composer
-      - ./src:/var/www/html
+      - ./:/var/www/html
       - ./Docker/php/conf/php.ini:/usr/local/etc/php/conf.d/custom.ini
     depends_on:
       - db
