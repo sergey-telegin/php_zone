@@ -3,7 +3,7 @@ use App\MyProject\Controllers\MainController;
 use App\MyProject\Controllers\ArticlesController;
 
 $loadClass = function (string $className) {
-    $path = '/var/www/html/src/'.$className . '.php';
+    $path = 'var/www/html/src/'.$className . '.php';
     $path = str_replace('\\', '/', $path);
     require_once '/' . str_replace('App/','',$path);
 };
