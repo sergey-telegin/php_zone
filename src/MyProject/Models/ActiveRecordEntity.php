@@ -2,6 +2,7 @@
 
 namespace App\MyProject\Models;
 
+use App\MyProject\Services\Db;
 abstract class ActiveRecordEntity
 {
     protected $id;
@@ -27,8 +28,18 @@ abstract class ActiveRecordEntity
         $db = new Db();
         return $db->queryFetchAll('SELECT * FROM `' . static::getTableName() . '`;', [], static::class);
     }
-    abstract protected static function getTableName(): string
+    abstract protected static function getTableName(): string;
+
+    public static function getById(int $id): ?self
     {
-        return 'articles';
+        $db = new Db();
+        $entities = $db->queryFetchAll(
+            'SELECT * FROM `' . static::getTableName() . '` WHERE id=:id;',
+            [':id' => $id],
+            static::class
+        );
+        return $entities ? $entities[0] : null;
     }
+
+
 }

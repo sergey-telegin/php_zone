@@ -4,7 +4,7 @@ namespace App\MyProject\Models\Users;
 
 class User
 {
-    private $name;
+    protected $name;
 
     public function __construct(string $name)
     {

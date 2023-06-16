@@ -1,38 +1,33 @@
 <?php
 
 namespace App\MyProject\Models\Articles;
-use App\MyProject\Models\Users\User;
 
-class Article
+use App\MyProject\Models\ActiveRecordEntity;
+
+class Article extends ActiveRecordEntity
 {
 
-    private $name;
+    protected $name;
 
-    private $text;
+    protected $text;
 
-    private $authorId;
+    protected $authorId;
 
-    private $createdAt;
+    protected $createdAt;
 
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * @return string
-     */
     public function getText(): string
     {
         return $this->text;
     }
 
-
-
-
-
+    protected static function getTableName(): string
+    {
+        return 'articles';
+    }
 
 }
