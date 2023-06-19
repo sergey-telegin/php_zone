@@ -7,8 +7,13 @@ namespace App\MyProject\Services;
     {
         private $pdo;
 
+        private static $instancesCount = 0;
+
+
         public function __construct()
         {
+            self::$instancesCount++;
+
             $dbOptions = (require __DIR__ . '/../../settings.php')['db'];
 
             $this->pdo = new \PDO(
@@ -31,6 +36,11 @@ namespace App\MyProject\Services;
             return $sth->fetchAll(\PDO::FETCH_CLASS, $className);
         }
 
+        public static function getInstancesCount(): int
+        {
+            return self::$instancesCount;
+        }
     }
+
 
 }

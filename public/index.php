@@ -31,3 +31,5 @@ $actionName = $controllerAndAction[1];
 
 $controller = new $controllerName();
 $controller->$actionName(...$matches);
+
+var_dump(App\MyProject\Services\Db::getInstancesCount());

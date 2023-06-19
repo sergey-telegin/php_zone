@@ -11,8 +11,15 @@ class User
         $this->name = $name;
     }
 
+    public function __get()
+    {
+        gettype()
+    }
+
     public function getName(): string
     {
         return $this->name;
     }
+
+
 }
