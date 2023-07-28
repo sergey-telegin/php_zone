@@ -5,7 +5,7 @@ namespace App\MyProject\Services;
 {
     class Db
     {
-        private $pdo;
+        private $db;
 
         private static $instancesCount = 0;
 
@@ -14,26 +14,26 @@ namespace App\MyProject\Services;
         {
             self::$instancesCount++;
 
-            $dbOptions = (require __DIR__ . '/../../settings.php')['db'];
+            $dbParam = (require __DIR__ . '/../../settings.php')['db'];
 
-            $this->pdo = new \PDO(
-                'mysql:host=' . $dbOptions['host'] . ';dbname=' . $dbOptions['dbname'],
-                $dbOptions['user'],
-                $dbOptions['password']
+            $this->db = new \PDO(
+                'mysql:host=' . $dbParam['host'] . ';dbname=' . $dbParam['dbname'],
+                $dbParam['user'],
+                $dbParam['password']
             );
-            $this->pdo->exec('SET NAMES UTF8');
+            $this->db->exec('SET NAMES UTF8');
         }
 
         public function queryFetchAll(string $sql, $params = [], string $className = 'stdClass'): ?array
         {
-            $sth = $this->pdo->prepare($sql);
-            $result = $sth->execute($params);
+            $stmt = $this->db->prepare($sql);
+            $result = $stmt->execute($params);
 
             if (false === $result) {
                 return null;
             }
 
-            return $sth->fetchAll(\PDO::FETCH_CLASS, $className);
+            return $stmt->fetchAll(\PDO::FETCH_CLASS, $className);
         }
 
         public static function getInstancesCount(): int

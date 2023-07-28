@@ -1,3 +1,3 @@
 <?php include __DIR__ . '/../header.php'; ?>
-    Привет, <?= $name ?>!!!
+    Привет, <?= $user ?>!!!
 <?php include __DIR__ . '/../footer.php'; ?>

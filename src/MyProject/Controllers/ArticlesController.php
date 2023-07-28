@@ -7,7 +7,6 @@ use App\MyProject\View\View;
 
 class ArticlesController
 {
-
     private $view;
 
     public function __construct()
@@ -17,13 +16,15 @@ class ArticlesController
 
     public function view(int $articleId)
     {
-        if ($article === null){
-            $this->view->renderHtml('errors/404.php',[], 404);
+        $article = Article::getById($articleId);
+
+        if ($article === null) {
+            $this->view->renderHtml('errors/404.php', [], 404);
             return;
         }
 
-        $this->view->renderHtml('articles/view.php', ['article']);
-
+        $this->view->renderHtml('articles/view.php', [
+            'article' => $article
+        ]);
     }
-
 }

@@ -4,7 +4,7 @@ return [
         'driver' => 'mysql',
         'host' => 'db',
         'dbname' => 'test',
-        'user' => 'user',
+        'user' => 'root',
         'password' => '1',
     ]
 ];
